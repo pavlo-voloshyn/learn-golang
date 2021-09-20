@@ -26,7 +26,7 @@ func NewStudentController(st services.StudentService) StudentController {
 }
 
 func (s *studentController) GetById(c *gin.Context) {
-	c.JSON(200, s.studentService.GetById(c.GetInt("id")))
+	c.JSON(200, s.studentService.GetById(c.GetUint("id")))
 }
 
 func (s *studentController) GetAll(c *gin.Context) {
@@ -41,7 +41,7 @@ func (s *studentController) Create(c *gin.Context) {
 }
 
 func (s *studentController) Delete(c *gin.Context) {
-	if err := s.studentService.Delete(c.GetInt("id")); err != nil {
+	if err := s.studentService.Delete(c.GetUint("id")); err != nil {
 		c.AbortWithStatusJSON(http.StatusBadRequest, err)
 	}
 	c.AbortWithStatus(http.StatusOK)

@@ -1,8 +1,10 @@
 package entities
 
+import "gorm.io/gorm"
+
 type Student struct {
-	Id       int    `json:"id"`
+	ID       uint   `json:"id" gorm:"primaryKey"`
 	Name     string `json:"name"`
 	LastName string `json:"lastname"`
-	CockSize int    `json:"cocksize"`
+	gorm.Model
 }
